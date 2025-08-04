@@ -218,6 +218,9 @@
         db_file="${dataDir}/${serviceName}.db"
 
         echo "Starting ${serviceName} to generate db..."
+
+        echo "$CREDENTIALS_DIRECTORY/api_key"
+
         ${apiKeyEnvVar}=$CREDENTIALS_DIRECTORY/api_key \
           ${lib.getExe cfg.package} \
           -nobrowser \
