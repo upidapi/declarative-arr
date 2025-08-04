@@ -80,7 +80,7 @@
     appUrl = lib.concatStringsSep "/" (lib.filter (x: x != "") [
       "http://localhost:${toString cfg.settings.server.port}"
       (cfg.settings.server.urlBase or "")
-      "api/v1"
+      apiPath
     ]);
 
     curl' =
@@ -215,12 +215,13 @@
         # bash
       in ''
         # TODO: test this
-        export ${apiKeyEnvVar}=$CREDENTIALS_DIRECTORY/api_key
-
         db_file="${dataDir}/${serviceName}.db"
 
         echo "Starting ${serviceName} to generate db..."
-        ${lib.getExe cfg.package} -nobrowser -data="${cfg.dataDir}"&
+        ${apiKeyEnvVar}=$CREDENTIALS_DIRECTORY/api_key \
+          ${lib.getExe cfg.package} \
+          -nobrowser \
+          -data="${cfg.dataDir}"&
 
         echo "Waiting for db to be created..."
         until [ -f "$db_file" ]
@@ -606,7 +607,7 @@ in {
     (mkArrConfig {
       serviceName = "sonarr";
       instanceName = "Sonarr";
-      apiPath = "/api/v3";
+      apiPath = "api/v3";
 
       enableNaming = true;
       namingDefault = {
@@ -629,7 +630,7 @@ in {
 
     (mkArrConfig {
       serviceName = "radarr";
-      apiPath = "/api/v3";
+      apiPath = "api/v3";
 
       namingDefault = {
         renameMovies = true;
@@ -644,7 +645,7 @@ in {
 
     (mkArrConfig {
       serviceName = "prowlarr";
-      apiPath = "/api/v1";
+      apiPath = "api/v1";
 
       enableIndexers = true;
       enableIndexerProxies = true;
