@@ -3,7 +3,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
-  outputs = {
+  outputs = _: {
     nixosModules = rec {
       declarative-jellyfin = import ./modules;
       default = declarative-jellyfin;
