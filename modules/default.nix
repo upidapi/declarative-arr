@@ -219,9 +219,7 @@
 
         echo "Starting ${serviceName} to generate db..."
 
-        echo "$CREDENTIALS_DIRECTORY/api_key"
-
-        ${apiKeyEnvVar}=$CREDENTIALS_DIRECTORY/api_key \
+        ${apiKeyEnvVar}=$(cat ${cfg.apiKeyFile}) \
           ${lib.getExe cfg.package} \
           -nobrowser \
           -data="${cfg.dataDir}"&
@@ -598,9 +596,6 @@
         serviceConfig = {
           # User = serviceName;
           ExecStart = lib.mkForce "${lib.getExe init-script}";
-          LoadCredential = [
-            "api_key:${cfg.apiKeyFile}"
-          ];
         };
       };
     };
