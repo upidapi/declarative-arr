@@ -80,7 +80,7 @@
     appUrl = lib.concatStringsSep "/" (lib.filter (x: x != "") [
       "http://localhost:${toString cfg.settings.server.port}"
       (cfg.settings.server.urlBase or "")
-      "/api/v1"
+      "api/v1"
     ]);
 
     curl' =
