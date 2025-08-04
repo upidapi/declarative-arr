@@ -63,7 +63,7 @@ Example minimal flake.nix:
 ```
 
 ## Examples
-For a full setup see [my dotfiles](TOOD)
+For a full setup see [my dotfiles](https://github.com/upidapi/NixOs/blob/main/modules/nixos/homelab/media/arr.nix)
 
 ### Sonarr
 ```nix
