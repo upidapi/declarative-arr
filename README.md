@@ -4,6 +4,12 @@ Nixos modules for the arr suite (currently sonarr, radarr, prowlarr). They all
 work via sending api requests to mimic a user configuring them. Might change in
 the future but atm it seams to work quite well.
 
+If you really want the full jellyseerr setup, i also have a module for
+declarative jellyseerr in 
+[my dotfiles](https://github.com/upidapi/NixOs/blob/main/modules/nixos/homelab/media/jellyseerr/base.nix).
+However that one is quite jank. So I dont really recommend it. In the future I
+might clean it up and publish it.
+
 This project is greatly inspired by [declarative-jellyfin](https://github.com/Sveske-Juice/declarative-jellyfin), especially this readme. 
 
 > [!WARNING]
