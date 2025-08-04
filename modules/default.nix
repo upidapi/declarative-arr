@@ -63,6 +63,7 @@
 
   mkArrConfig = {
     serviceName,
+    apiPath,
     instanceName ? null,
     enableNaming ? false,
     namingDefault ? {},
